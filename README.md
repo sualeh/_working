@@ -1,4 +1,3 @@
-working
-=======
+# Sualeh's Working Project
 
-Testing Java code snippets
+Sualeh's project for testing Java code snippets.
