@@ -62,11 +62,11 @@ public class StringEncoding
   {
     try
     {
-
-      printByteArray(b);
-
+      // Encode and decode
       final String s = new String(b, charset);
       final byte[] c = s.getBytes(charset);
+
+      // Compare and analyze
       final int i = compareByteArrays(b, c);
       switch (i)
       {
@@ -75,14 +75,14 @@ public class StringEncoding
           System.out.println(charset);
           break;
         case -1:
-          if (MESSAGE)
+          if (PRINT_ANALYSIS)
           {
             System.out.print("Different lengths                              ");
             System.out.println(charset);
           }
           break;
         default:
-          if (MESSAGE)
+          if (PRINT_ANALYSIS)
           {
             System.out.print(String.format("Location %03d: ", i));
             printByte(b[i]);
@@ -93,12 +93,10 @@ public class StringEncoding
           }
           break;
       }
-
-      printByteArray(c);
     }
     catch (final Exception e)
     {
-      if (MESSAGE)
+      if (PRINT_ANALYSIS)
       {
         System.out.print("Encoding error                                 ");
         System.out.println(charset);
@@ -142,30 +140,6 @@ public class StringEncoding
                        .toBinaryString(b & 255 | 256).substring(1)));
   }
 
-  private static void printByteArray(final byte[] b)
-  {
-    if (!DEBUG)
-    {
-      return;
-    }
-
-    if (b == null)
-    {
-      return;
-    }
-
-    for (int k = 0; k < b.length; k++)
-    {
-      printByte(b[k]);
-      System.out.print(",");
-      if ((k + 1) % 4 == 0)
-      {
-        System.out.println();
-      }
-    }
-  }
-
-  private static final boolean MESSAGE = true;
-  private static final boolean DEBUG = false;
+  private static final boolean PRINT_ANALYSIS = true;
 
 }
