@@ -2,6 +2,9 @@ package us.fatehi.working;
 
 
 import java.nio.charset.Charset;
+import java.util.Arrays;
+
+import org.apache.commons.codec.binary.Hex;
 
 /**
  * See which charset encoding preserves the input bytes.
@@ -84,12 +87,18 @@ public class StringEncoding
         default:
           if (PRINT_ANALYSIS)
           {
-            System.out.print(String.format("Location %03d: ", i));
-            printByte(b[i]);
-            System.out.print(" != ");
-            printByte(c[i]);
-            System.out.print("   ");
-            System.out.println(charset);
+            System.out.println(String
+              .format("Difference at location %03d                     %s",
+                      i,
+                      charset));
+            if (PRINT_DETAILED_ANALYSIS)
+            {
+              final char[] blank = new char[(i) * 2];
+              Arrays.fill(blank, ' ');
+              System.out.println(Hex.encodeHexString(b));
+              System.out.println(Hex.encodeHexString(c));
+              System.out.println(String.valueOf(blank) + "^^");
+            }
           }
           break;
       }
@@ -132,14 +141,7 @@ public class StringEncoding
     return 0;
   }
 
-  private static void printByte(final byte b)
-  {
-    final int intB = b;
-    System.out.print((intB < 0? "-": " ")
-                     + String.format("%03d=%s", Math.abs(intB), Integer
-                       .toBinaryString(b & 255 | 256).substring(1)));
-  }
-
   private static final boolean PRINT_ANALYSIS = true;
+  private static final boolean PRINT_DETAILED_ANALYSIS = false;
 
 }
