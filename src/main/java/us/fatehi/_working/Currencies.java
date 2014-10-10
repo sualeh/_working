@@ -16,7 +16,6 @@ public class Currencies
     final List<Currency> currencies = new ArrayList<>(Currency.getAvailableCurrencies());
     Collections.sort(currencies, new Comparator<Currency>()
     {
-
       @Override
       public int compare(final Currency o1, final Currency o2)
       {
