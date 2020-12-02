@@ -1,11 +1,8 @@
 package us.fatehi._working;
 
+public class NegativeZero {
 
-public class NegativeZero
-{
-
-  public static void main(final String[] args)
-  {
+  public static void main(final String[] args) {
     // Java (and the IEEE 754 floating-point standard) define two
     // representations of zero: negative zero and positive zero.
 
@@ -15,5 +12,4 @@ public class NegativeZero
     System.out.println(x);
     System.out.println(y);
   }
-
 }

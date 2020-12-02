@@ -19,38 +19,30 @@
 // package org.jpos.iso;
 package us.fatehi._working;
 
-
 import java.nio.charset.StandardCharsets;
 
 import org.jpos.iso.ISOUtil;
 
-public class ISOUtilEncoding
-{
+public class ISOUtilEncoding {
 
-  public static void main(String[] args)
-  {
+  public static void main(String[] args) {
 
     // See
     // http://www-01.ibm.com/support/knowledgecenter/SSEPEK_10.0.0/com.ibm.db2z10.doc.char/src/tpc/db2z_codeptdiffebcdic.dita
 
-    final char[] chars = new char[] {
-        '[', ']', '^', '¢', '|', '¨', 'Ý'
-    };
+    final char[] chars = new char[] {'[', ']', '^', '¢', '|', '¨', 'Ý'};
 
-    final byte[] ebcdicBytes = ISOUtil.asciiToEbcdic(new String(chars)
-      .getBytes(StandardCharsets.ISO_8859_1));
-    for (char c: chars)
-    {
+    final byte[] ebcdicBytes =
+        ISOUtil.asciiToEbcdic(new String(chars).getBytes(StandardCharsets.ISO_8859_1));
+    for (char c : chars) {
       System.out.print(c);
       System.out.print("  ");
     }
     System.out.println();
 
-    for (byte b: ebcdicBytes)
-    {
+    for (byte b : ebcdicBytes) {
       System.out.print(String.format("%02x ", b).toUpperCase());
     }
     System.out.println();
   }
-
 }
