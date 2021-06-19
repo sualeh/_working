@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 import org.apache.commons.lang3.SerializationException;
 import org.apache.commons.lang3.SerializationUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SerializationUnitTest {
 
